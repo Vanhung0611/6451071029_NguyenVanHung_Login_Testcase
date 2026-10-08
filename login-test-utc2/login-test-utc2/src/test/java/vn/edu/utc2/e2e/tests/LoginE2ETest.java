@@ -111,4 +111,14 @@ public class LoginE2ETest extends BaseTest {
 
         Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Hệ thống không phân biệt chữ hoa/thường!");
     }
+
+    @Test
+    @DisplayName("TC10: Nhập ký tự đặc biệt / SQL Injection vào trường đăng nhập")
+    @Story("TC10 - Phòng chống SQL Injection")
+    void test_TC10_sqlInjectionPrevention() {
+        LoginPage loginPage = new LoginPage(driver).open();
+        loginPage.loginAs("' OR '1'='1", "' OR '1'='1");
+
+        Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi bảo mật: Vượt qua xác thực bằng chuỗi SQL Injection!");
+    }
 }
