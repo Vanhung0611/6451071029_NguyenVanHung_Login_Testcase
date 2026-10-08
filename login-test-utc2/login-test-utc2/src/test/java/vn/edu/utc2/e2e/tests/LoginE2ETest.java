@@ -67,7 +67,7 @@ public class LoginE2ETest extends BaseTest {
         Assertions.assertTrue(loginPage.isRememberMeChecked(), "Lỗi: Checkbox chưa được chọn!");
     }
 
-     @Test
+    @Test
     @DisplayName("TC6: Đăng nhập không chọn 'Giữ tôi luôn đăng nhập'")
     @Story("TC6 - Không chọn Giữ tôi luôn đăng nhập")
     void test_TC6_withoutRememberMe() {
@@ -80,6 +80,16 @@ public class LoginE2ETest extends BaseTest {
         loginPage.loginAs("huongnt", "123456@utc");
 
         // 3. Xác nhận sau khi submit vẫn ở lại trang đăng nhập (hoặc theo kết quả mong đợi)
+        Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Đã rời khỏi trang Login!");
+    }
+
+    @Test
+    @DisplayName("TC7: Để trống cả tên đăng nhập và mật khẩu")
+    @Story("TC7 - Để trống cả hai trường")
+    void test_TC7_emptyBothFields() {
+        LoginPage loginPage = new LoginPage(driver).open();
+        loginPage.loginAs("", "");
+
         Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Đã rời khỏi trang Login!");
     }
 }
