@@ -46,4 +46,14 @@ public class LoginE2ETest extends BaseTest {
 
         Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Đã rời khỏi trang Login!");
     }
+    
+    @Test
+    @DisplayName("TC4: Sai tên, đúng mật khẩu")
+    @Story("TC4 - Sai Username")
+    void test_TC4_wrongUsername() {
+        LoginPage loginPage = new LoginPage(driver).open();
+        loginPage.loginAs("huongthunguyen", "123456@utc");
+
+        Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Đã rời khỏi trang Login!");
+    }
 }
