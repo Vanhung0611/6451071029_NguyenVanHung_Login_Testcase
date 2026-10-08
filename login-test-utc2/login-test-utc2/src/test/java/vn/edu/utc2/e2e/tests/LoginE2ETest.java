@@ -121,4 +121,14 @@ public class LoginE2ETest extends BaseTest {
 
         Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi bảo mật: Vượt qua xác thực bằng chuỗi SQL Injection!");
     }
+
+    @Test
+    @DisplayName("TC11: Kiểm tra tính năng ẩn mật khẩu khi nhập")
+    @Story("TC11 - Che ký tự mật khẩu")
+    void test_TC11_passwordMasking() {
+        LoginPage loginPage = new LoginPage(driver).open();
+        loginPage.fillPassword("123456@utc");
+
+        Assertions.assertEquals("password", loginPage.getPasswordInputType(), "Lỗi: Trường mật khẩu không che giấu ký tự!");
+    }
 }
