@@ -101,4 +101,14 @@ public class LoginE2ETest extends BaseTest {
         loginPage.loginAs("   ", "123456@utc");
         Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Không chặn username chỉ có khoảng trắng!");
     }
+
+    @Test
+    @DisplayName("TC9: Kiểm tra phân biệt chữ hoa và chữ thường trong mật khẩu")
+    @Story("TC9 - Phân biệt hoa thường mật khẩu")
+    void test_TC9_caseSensitivePassword() {
+        LoginPage loginPage = new LoginPage(driver).open();
+        loginPage.loginAs("huongnt", "123456@UTC");
+
+        Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Hệ thống không phân biệt chữ hoa/thường!");
+    }
 }
