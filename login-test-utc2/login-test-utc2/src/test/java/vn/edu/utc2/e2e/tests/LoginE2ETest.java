@@ -46,7 +46,7 @@ public class LoginE2ETest extends BaseTest {
 
         Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Đã rời khỏi trang Login!");
     }
-    
+
     @Test
     @DisplayName("TC4: Sai tên, đúng mật khẩu")
     @Story("TC4 - Sai Username")
@@ -55,5 +55,15 @@ public class LoginE2ETest extends BaseTest {
         loginPage.loginAs("huongthunguyen", "123456@utc");
 
         Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Đã rời khỏi trang Login!");
+    }
+    
+    @Test
+    @DisplayName("TC5: Đăng nhập thành công và chọn 'Giữ tôi luôn đăng nhập'")
+    @Story("TC5 - Checkbox Giữ tôi luôn đăng nhập")
+    void test_TC5_rememberMeCheckbox() {
+        LoginPage loginPage = new LoginPage(driver).open();
+        loginPage.toggleRememberMe();
+
+        Assertions.assertTrue(loginPage.isRememberMeChecked(), "Lỗi: Checkbox chưa được chọn!");
     }
 }
