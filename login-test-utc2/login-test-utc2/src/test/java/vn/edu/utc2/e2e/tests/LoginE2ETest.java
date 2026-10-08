@@ -27,5 +27,14 @@ public class LoginE2ETest extends BaseTest {
         Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Đã rời khỏi trang Login!");
     }
 
-    
+    @Test
+    @DisplayName("TC2: Để trống user hoặc pass word (chỉ nhập user)")
+    @Story("TC2 - Để trống Password")
+    void test_TC2_emptyPassword() {
+        LoginPage loginPage = new LoginPage(driver).open();
+        loginPage.loginAs("huongnt", "");
+
+        Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Đã rời khỏi trang Login!");
+    }
+
 }
