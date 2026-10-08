@@ -92,4 +92,13 @@ public class LoginE2ETest extends BaseTest {
 
         Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Đã rời khỏi trang Login!");
     }
+
+    @Test
+    @DisplayName("TC8: Nhập tên đăng nhập chỉ chứa khoảng trắng")
+    @Story("TC8 - Username khoảng trắng")
+    void test_TC8_whitespaceUsername() {
+        LoginPage loginPage = new LoginPage(driver).open();
+        loginPage.loginAs("   ", "123456@utc");
+        Assertions.assertTrue(loginPage.isOnLoginPage(), "Lỗi: Không chặn username chỉ có khoảng trắng!");
+    }
 }
