@@ -131,4 +131,17 @@ public class LoginE2ETest extends BaseTest {
 
         Assertions.assertEquals("password", loginPage.getPasswordInputType(), "Lỗi: Trường mật khẩu không che giấu ký tự!");
     }
+
+    @Test
+    @DisplayName("TC12: Điều hướng sang trang quên mật khẩu")
+    @Story("TC12 - Link Quên mật khẩu")
+    void test_TC12_forgotPasswordLinkNavigation() {
+        LoginPage loginPage = new LoginPage(driver).open();
+        loginPage.clickForgotPassword();
+
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.urlContains("/Login/GetPass"));
+
+        Assertions.assertTrue(driver.getCurrentUrl().contains("/Login/GetPass"), "Lỗi: Không chuyển hướng sang trang Quên mật khẩu!");
+    }
 }
