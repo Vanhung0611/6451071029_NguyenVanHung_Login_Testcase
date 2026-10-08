@@ -8,13 +8,15 @@ import vn.edu.utc2.e2e.base.BasePage;
 public class LoginPage extends BasePage {
     public static final String URL = "https://vanphongdientu.utc.edu.vn/Login";
 
-    // Khai báo Locators private chuẩn slide 51
+    // Locators chuẩn theo DOM trang UTC
     private final By usernameField = By.name("username");
     private final By passwordField = By.name("userpwd");
     private final By loginButton = By.cssSelector("input.submit_login");
     private final By rememberMeDisplay = By.cssSelector("label.check");
     private final By rememberMeCheckbox = By.id("persistent");
     private final By forgotPasswordLink = By.cssSelector("a[href='/Login/GetPass']");
+    private final By emailUtcButton = By.xpath("//a[contains(text(), 'e-mail UTC')]");
+    private final By helpDeskLink = By.cssSelector("a[href='http://hotrokythuat.utc.edu.vn']");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -58,6 +60,14 @@ public class LoginPage extends BasePage {
 
     public void clickForgotPassword() {
         click(forgotPasswordLink);
+    }
+
+    public void clickEmailUtcLogin() {
+        click(emailUtcButton);
+    }
+
+    public void clickHelpDeskLink() {
+        click(helpDeskLink);
     }
 
     public boolean isOnLoginPage() {
